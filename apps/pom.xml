@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>no.monorepo</groupId>
+        <artifactId>root</artifactId>
+        <version>${revision}</version>
+    </parent>
+
+    <artifactId>apps</artifactId>
+    <packaging>pom</packaging>
+
+    <profiles>
+        <profile>
+            <id>app1</id>
+            <activation><file><exists>app1/pom.xml</exists></file></activation>
+            <modules>
+                <module>app1</module>
+            </modules>
+        </profile>
+        <profile>
+            <id>app2</id>
+            <activation><file><exists>app2/pom.xml</exists></file></activation>
+            <modules>
+                <module>app2</module>
+            </modules>
+        </profile>
+    </profiles>
+</project>
