@@ -1,13 +1,13 @@
-package no.monorepo.lib2;
+package no.monorepo.app1;
 
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
 /**
- * Unit test for simple App.
+ * Unit test for simple App1.
  */
-public class AppTest 
+public class App1Test
 {
     /**
      * Rigorous Test :-)
