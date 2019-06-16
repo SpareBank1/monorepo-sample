@@ -1,0 +1,3 @@
+# Show us information about failures.
+build --verbose_failures
+test --test_output=errors
