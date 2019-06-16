@@ -7,6 +7,7 @@ sources()
 java_library(
     name = "lib2",
     srcs = [":src_main"],
+    deps = ["@maven//:org_apache_commons_commons_lang3"],
 )
 
 java_test(

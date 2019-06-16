@@ -13,7 +13,8 @@ load("@rules_jvm_external//:defs.bzl", "maven_install")
 maven_install(
     name = "maven",
     artifacts = [
-        "junit:junit:4.11",
+        "junit:junit:4.12",
+        "org.apache.commons:commons-lang3:3.9",
     ],
     repositories = [
         "https://maven.google.com",
@@ -21,3 +22,4 @@ maven_install(
     ],
     fetch_sources = True,
 )
+

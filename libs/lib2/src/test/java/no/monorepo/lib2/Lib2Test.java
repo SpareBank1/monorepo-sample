@@ -10,7 +10,13 @@ public class Lib2Test
 {
 
     @Test
-    public void shouldAnswerWithTrue() {
+    public void shouldWhisper() {
        assertEquals("abc", Lib2.whisper("ABC"));
     }
+
+    @Test
+    public void shouldCapitalize() {
+        assertEquals("John doe", Lib2.capitalize("john doe"));
+    }
+
 }
