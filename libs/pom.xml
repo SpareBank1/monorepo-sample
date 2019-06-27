@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
 
-  <parent>
-    <groupId>no.monorepo</groupId>
-    <artifactId>root</artifactId>
-    <version>${revision}</version>
-  </parent>
+    <parent>
+        <groupId>no.monorepo</groupId>
+        <artifactId>root</artifactId>
+        <version>${revision}</version>
+    </parent>
 
-  <groupId>no.monorepo.libs</groupId>
-  <artifactId>libs</artifactId>
-  <packaging>pom</packaging>
+    <groupId>no.monorepo.libs</groupId>
+    <artifactId>libs</artifactId>
+    <packaging>pom</packaging>
 
-  <modules>
-    <module>lib1</module>
-    <module>lib2</module>
-  </modules>
+    <modules>
+        <module>lib1</module>
+        <module>lib2</module>
+    </modules>
 </project>
