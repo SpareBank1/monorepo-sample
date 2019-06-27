@@ -1,27 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
 
-  <parent>
-    <groupId>no.monorepo</groupId>
-    <artifactId>libs</artifactId>
-    <version>${revision}</version>
-    <!--<relativePath>../../pom.xml</relativePath>-->
-  </parent>
+    <parent>
+        <groupId>no.monorepo.libs</groupId>
+        <artifactId>libs</artifactId>
+        <version>${revision}</version>
+        <!--<relativePath>../../pom.xml</relativePath>-->
+    </parent>
 
-  <artifactId>lib1</artifactId>
-  <packaging>jar</packaging>
+    <groupId>no.monorepo.libs.lib1</groupId>
+    <artifactId>lib1</artifactId>
+    <packaging>jar</packaging>
 
 
-  <dependencies>
-    <dependency>
-      <groupId>no.monorepo</groupId>
-      <artifactId>lib2</artifactId>
-      <version>${project.version}</version>
-    </dependency>
-  </dependencies>
+    <dependencies>
+        <dependency>
+            <groupId>no.monorepo.libs.lib2</groupId>
+            <artifactId>lib2</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+    </dependencies>
 
 
 </project>
