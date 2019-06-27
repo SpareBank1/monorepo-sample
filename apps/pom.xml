@@ -10,20 +10,29 @@
         <version>${revision}</version>
     </parent>
 
+    <groupId>no.monorepo.apps</groupId>
     <artifactId>apps</artifactId>
     <packaging>pom</packaging>
 
     <profiles>
         <profile>
             <id>app1</id>
-            <activation><file><exists>app1/pom.xml</exists></file></activation>
+            <activation>
+                <file>
+                    <exists>app1/pom.xml</exists>
+                </file>
+            </activation>
             <modules>
                 <module>app1</module>
             </modules>
         </profile>
         <profile>
             <id>app2</id>
-            <activation><file><exists>app2/pom.xml</exists></file></activation>
+            <activation>
+                <file>
+                    <exists>app2/pom.xml</exists>
+                </file>
+            </activation>
             <modules>
                 <module>app2</module>
             </modules>

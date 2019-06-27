@@ -10,6 +10,7 @@
     <version>${revision}</version>
   </parent>
 
+  <groupId>no.monorepo.libs</groupId>
   <artifactId>libs</artifactId>
   <packaging>pom</packaging>
 

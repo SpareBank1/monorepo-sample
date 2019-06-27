@@ -5,11 +5,12 @@
   <modelVersion>4.0.0</modelVersion>
 
   <parent>
-    <groupId>no.monorepo</groupId>
+    <groupId>no.monorepo.apps</groupId>
     <artifactId>apps</artifactId>
     <version>${revision}</version>
   </parent>
 
+  <groupId>no.monorepo.apps.app2</groupId>
   <artifactId>app2</artifactId>
   <packaging>jar</packaging>
 
@@ -45,7 +46,7 @@
 
   <dependencies>
     <dependency>
-      <groupId>no.monorepo</groupId>
+      <groupId>no.monorepo.libs</groupId>
       <artifactId>lib2</artifactId>
       <version>${project.version}</version>
     </dependency>

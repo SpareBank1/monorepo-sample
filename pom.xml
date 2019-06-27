@@ -25,7 +25,9 @@
     <profile>
       <id>ci</id>
       <activation>
-        <property><name>env.GIT_COMMIT</name></property>
+        <property>
+          <name>env.GIT_COMMIT</name>
+        </property>
       </activation>
       <properties>
         <revision>${env.GIT_COMMIT}</revision>

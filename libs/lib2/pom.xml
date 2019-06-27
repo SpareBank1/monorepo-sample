@@ -5,7 +5,7 @@
   <modelVersion>4.0.0</modelVersion>
 
   <parent>
-    <groupId>no.monorepo</groupId>
+    <groupId>no.monorepo.libs</groupId>
     <artifactId>libs</artifactId>
     <version>${revision}</version>
   </parent>
