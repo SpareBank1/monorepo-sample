@@ -1,0 +1,6 @@
+# Default owner
+/ @nordstrand
+
+# Code owner for the applications
+/apps/app1/   @nordstrand
+/apps/app2/   @agjendem
