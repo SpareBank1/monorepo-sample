@@ -50,7 +50,7 @@ most time prefer to only have a subset of the tree checked out at once. Git *spa
 a mechanism for archieving this.
 
 Executing:
-```
+```bash
 git config core.sparseCheckout true
 echo '/*'           >  .git/info/sparse-checkout
 echo '!/apps/*'     >> .git/info/sparse-checkout
@@ -68,7 +68,7 @@ that there will be pom.xml-references to submodules that no longer are present o
 work-around this is to use Maven profiles that only activates when the corresponding pom.xml-file
 is available on disc:
 
-```
+```xml
 <profile>
   <id>app2</id>
   <activation>
