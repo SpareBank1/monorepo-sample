@@ -3,7 +3,7 @@ This repo showcases how one could structure monorepos and build them with either
 Maven or Bazel. Maven is really not a monorepo-*native* build tool (e.g. lacks
 trustworthy incremental builds, can only build java code natively, is recursive and
 struggles with partial repo checkouts) but can be made good use of with some tricks
-and usage of a couple of less know command line switches.
+and usage of a couple of lesser known command line switches.
 
 ## The repo
 A couple of toy applications under `apps/` depend on shared code under `libs/`.
@@ -40,7 +40,7 @@ Print dependencies of `app1`| `./apps/app1` | `mvn dependency:list` | `bazel que
  relative the current working directory.
  * Bazel doesn't build the so-called *implicit* deploy jar-target (`:app1_deploy.jar`) if we
  refrain from building with the `:*` suffix. Deploy jar is Bazel speak før 
- über-/super-/fat-jar/.
+ über-/super-/fat-jar. 
  * Maven has no trustworthy support for incremental builds, hence one typically always build
  from a `clean` state.
 
