@@ -1,0 +1,13 @@
+pipeline {
+
+
+    stages {
+
+        stage('Build app') {
+            script {
+                sh 'mvn -am -pl :app1 clean install'
+            }
+        }
+
+    }
+}

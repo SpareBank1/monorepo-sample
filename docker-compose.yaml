@@ -1,0 +1,14 @@
+version: "3"
+services:
+  git:
+    build: .
+    ports:
+      - "122:22"
+  ci:
+    build: ci/
+    ports:
+      - "8080:8080"
+    environment:
+      - JAVA_OPTS="-Djenkins.install.runSetupWizard=false"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
