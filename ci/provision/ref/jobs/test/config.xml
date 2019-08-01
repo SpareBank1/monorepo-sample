@@ -1,0 +1,77 @@
+<?xml version='1.1' encoding='UTF-8'?>
+<org.jenkinsci.plugins.workflow.multibranch.WorkflowMultiBranchProject plugin="workflow-multibranch@2.21">
+  <actions/>
+  <description></description>
+  <displayName>test</displayName>
+  <properties>
+    <com.cloudbees.hudson.plugins.folder.properties.FolderCredentialsProvider_-FolderCredentialsProperty plugin="cloudbees-folder@6.9">
+      <domainCredentialsMap class="hudson.util.CopyOnWriteMap$Hash">
+        <entry>
+          <com.cloudbees.plugins.credentials.domains.Domain plugin="credentials@2.2.0">
+            <specifications/>
+          </com.cloudbees.plugins.credentials.domains.Domain>
+          <java.util.concurrent.CopyOnWriteArrayList>
+            <com.cloudbees.jenkins.plugins.sshcredentials.impl.BasicSSHUserPrivateKey plugin="ssh-credentials@1.17.1">
+              <id>git</id>
+              <description>git</description>
+              <username>git</username>
+              <privateKeySource class="com.cloudbees.jenkins.plugins.sshcredentials.impl.BasicSSHUserPrivateKey$DirectEntryPrivateKeySource">
+                <privateKey>{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}</privateKey>
+              </privateKeySource>
+            </com.cloudbees.jenkins.plugins.sshcredentials.impl.BasicSSHUserPrivateKey>
+            <com.cloudbees.plugins.credentials.impl.UsernamePasswordCredentialsImpl plugin="credentials@2.2.0">
+              <id>qwerty</id>
+              <description>qwerty</description>
+              <username>admin</username>
+              <password>{AQAAABAAAAAQHML8B6kbzaHAU3Fs4qFbvZyrDrGA4eFxsUN5aB7FccM=}</password>
+            </com.cloudbees.plugins.credentials.impl.UsernamePasswordCredentialsImpl>
+          </java.util.concurrent.CopyOnWriteArrayList>
+        </entry>
+      </domainCredentialsMap>
+    </com.cloudbees.hudson.plugins.folder.properties.FolderCredentialsProvider_-FolderCredentialsProperty>
+    <org.jenkinsci.plugins.pipeline.modeldefinition.config.FolderConfig plugin="pipeline-model-definition@1.3.9">
+      <dockerLabel></dockerLabel>
+      <registry plugin="docker-commons@1.15"/>
+    </org.jenkinsci.plugins.pipeline.modeldefinition.config.FolderConfig>
+  </properties>
+  <folderViews class="jenkins.branch.MultiBranchProjectViewHolder" plugin="branch-api@2.5.4">
+    <owner class="org.jenkinsci.plugins.workflow.multibranch.WorkflowMultiBranchProject" reference="../.."/>
+  </folderViews>
+  <healthMetrics>
+    <com.cloudbees.hudson.plugins.folder.health.WorstChildHealthMetric plugin="cloudbees-folder@6.9">
+      <nonRecursive>false</nonRecursive>
+    </com.cloudbees.hudson.plugins.folder.health.WorstChildHealthMetric>
+  </healthMetrics>
+  <icon class="jenkins.branch.MetadataActionFolderIcon" plugin="branch-api@2.5.4">
+    <owner class="org.jenkinsci.plugins.workflow.multibranch.WorkflowMultiBranchProject" reference="../.."/>
+  </icon>
+  <orphanedItemStrategy class="com.cloudbees.hudson.plugins.folder.computed.DefaultOrphanedItemStrategy" plugin="cloudbees-folder@6.9">
+    <pruneDeadBranches>true</pruneDeadBranches>
+    <daysToKeep>-1</daysToKeep>
+    <numToKeep>-1</numToKeep>
+  </orphanedItemStrategy>
+  <triggers/>
+  <disabled>false</disabled>
+  <sources class="jenkins.branch.MultiBranchProject$BranchSourceList" plugin="branch-api@2.5.4">
+    <data>
+      <jenkins.branch.BranchSource>
+        <source class="jenkins.plugins.git.GitSCMSource" plugin="git@3.11.0">
+          <id>ff961d66-bda0-49d9-be44-6f3ad1da0377</id>
+          <remote>ssh://git@git/home/git/test.git</remote>
+          <credentialsId>git</credentialsId>
+          <traits>
+            <jenkins.plugins.git.traits.BranchDiscoveryTrait/>
+          </traits>
+        </source>
+        <strategy class="jenkins.branch.DefaultBranchPropertyStrategy">
+          <properties class="empty-list"/>
+        </strategy>
+      </jenkins.branch.BranchSource>
+    </data>
+    <owner class="org.jenkinsci.plugins.workflow.multibranch.WorkflowMultiBranchProject" reference="../.."/>
+  </sources>
+  <factory class="org.jenkinsci.plugins.workflow.multibranch.WorkflowBranchProjectFactory">
+    <owner class="org.jenkinsci.plugins.workflow.multibranch.WorkflowMultiBranchProject" reference="../.."/>
+    <scriptPath>Jenkinsfile</scriptPath>
+  </factory>
+</org.jenkinsci.plugins.workflow.multibranch.WorkflowMultiBranchProject>

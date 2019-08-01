@@ -1,0 +1,16 @@
+pipeline {
+   agent {
+        docker {
+            image 'docker.io/library/maven:3.6.1-jdk-8'
+        }
+    }
+
+    stages {
+        stage('Build the world') {
+            steps {
+                sh 'mvn clean install'
+            }
+        }
+
+    }
+}
