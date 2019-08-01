@@ -2,9 +2,9 @@ node {
 
     def scmvars = checkout(scm)
     def commitHash = scmvars.GIT_COMMIT
-    def mavenOptions = "\"-Dsha1=${commitHash} -Drevision=${commitHash}-SNAPSHOT\""
+    def mavenOptions = "-Drevision=${commitHash}"
 
-    //env.MAVEN_OPTS="${mavenOptions}"
+    env.MAVEN_OPTS="${mavenOptions}"
 
 
     try {
