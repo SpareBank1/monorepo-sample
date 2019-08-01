@@ -1,0 +1,18 @@
+version: "3"
+services:
+  git:
+    build:
+      context: ..
+      dockerfile: ci/Dockerfile.gitrepo
+    ports:
+      - "122:22"
+  ci:
+    build: 
+      context: .
+      dockerfile: Dockerfile.jenkins
+    ports:
+      - "8080:8080"
+    environment:
+      - JAVA_OPTS="-Djenkins.install.runSetupWizard=false"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
