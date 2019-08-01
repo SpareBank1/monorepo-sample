@@ -1,11 +1,15 @@
 version: "3"
 services:
   git:
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile.gitrepo
     ports:
       - "122:22"
   ci:
-    build: ci/
+    build: 
+      context: .
+      dockerfile: Dockerfile.jenkins
     ports:
       - "8080:8080"
     environment:

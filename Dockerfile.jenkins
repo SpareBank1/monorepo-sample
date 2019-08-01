@@ -12,7 +12,8 @@ RUN echo 'deb [arch=amd64] https://download.docker.com/linux/debian stretch stab
 USER jenkins
 
 RUN /usr/local/bin/install-plugins.sh workflow-aggregator git
+
 RUN echo 2.0 > /usr/share/jenkins/ref/jenkins.install.UpgradeWizard.state
-ADD scriptApproval.xml /usr/share/jenkins/ref/
-ADD jobs /usr/share/jenkins/ref/jobs
-ADD secrets /usr/share/jenkins/ref/secrets
+ADD provision/ref/scriptApproval.xml /usr/share/jenkins/ref/
+ADD provision/ref/jobs /usr/share/jenkins/ref/jobs
+ADD provision/ref/secrets /usr/share/jenkins/ref/secrets
