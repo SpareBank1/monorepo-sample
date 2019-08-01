@@ -1,5 +1,5 @@
 # Monorepo
-This repo showcases how one could structure monorepos and build them with either Apache
+This repo showcases how one could structure and build monorepos with either Apache
 Maven or Bazel. Maven is really not a monorepo-*native* build tool (e.g. lacks
 trustworthy incremental builds, can only build java code natively, is recursive and
 struggles with partial repo checkouts) but can be made good use of with some tricks
@@ -44,6 +44,8 @@ Print dependencies of `app1`| `./apps/app1` | `mvn dependency:list` | `bazel que
  * Maven has no trustworthy support for incremental builds, hence one typically always build
  from a `clean` state.
 
+## Continous integration
+The [ci/](ci/README.md) sub folder contains a self-contained ci-stack for building the monorepo.
 
 
 ---
