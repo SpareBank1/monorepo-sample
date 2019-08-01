@@ -2,8 +2,8 @@ version: "3"
 services:
   git:
     build:
-      context: .
-      dockerfile: Dockerfile.gitrepo
+      context: ..
+      dockerfile: ci/Dockerfile.gitrepo
     ports:
       - "122:22"
   ci:
