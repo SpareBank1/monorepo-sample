@@ -1,7 +1,7 @@
 FROM jenkins/jenkins:2.176.2
 
 USER root
-RUN curl -fsSL https://download.docker.com/linux/debian/gpg | apt-key add -
+RUN curl -fsSLk https://download.docker.com/linux/debian/gpg | apt-key add -
 
 RUN apt-get update && \
     apt-get install -y  apt-transport-https
