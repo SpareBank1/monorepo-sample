@@ -87,21 +87,22 @@ is available on disc:
 
 ---
  
-## a bag of useful tricks for teaching an old dog something new
+## A bag of useful tricks for teaching an old dog something new
 
- 2. Defining the current version with an environment variable (that holds e.g current GIT revision)
+Defining the current version with an environment variable (that holds e.g current GIT revision)
 
 
- TODO:
-  Vurderar en "bazel-branch" och en "maven-branch"
-  Vurder en "en paket per java package" branch før Bazel
-  Test kotlin rules
-  Test bazel build cache
-  Test genrule før att bygga frontend kode
-  Test spring boot app
+---
 
-  Blog artikel:
-     * Monorepo øvergripande
-     * Demo-repo: rent praktiskt
-     * Bazel!!
+**TODO:**
+* Vurderar en "bazel-branch" och en "maven-branch"
+* Vurder en "en paket per java package" branch før Bazel
+* Test kotlin rules
+* Test bazel build cache
+* Test genrule før att bygga frontend kode
+* Test spring boot app
 
+* Blog artikel:
+  * Monorepo øvergripande
+  * Demo-repo: rent praktiskt
+  * Bazel!
