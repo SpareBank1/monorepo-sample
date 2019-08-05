@@ -1,6 +1,5 @@
-# Monorepo
-This repo showcases how one could structure and build monorepos with either Apache
-Maven or Bazel. 
+# Monorepo sample
+This repo showcases how one could structure and build monorepos with either Apache Maven or Bazel. 
 
 ## The repo
 A couple of toy applications under `apps/` depend on shared code under `libs/`.
@@ -19,7 +18,7 @@ A couple of toy applications under `apps/` depend on shared code under `libs/`.
 ```
 
 ## Continous integration
-The [ci/](ci/README.md) sub folder contains a self-contained ci-stack for building the monorepo with Jenkins.
+The [`ci/`](ci/README.md) sub folder contains a self-contained ci-stack for building the monorepo with Jenkins.
 
 ## Maven and Bazel: a comparison of basic actions
 Maven is really not a monorepo-*native* build tool (e.g. lacks
