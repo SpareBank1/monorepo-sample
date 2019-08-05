@@ -1,9 +1,6 @@
 # Monorepo
 This repo showcases how one could structure and build monorepos with either Apache
-Maven or Bazel. Maven is really not a monorepo-*native* build tool (e.g. lacks
-trustworthy incremental builds, can only build java code natively, is recursive and
-struggles with partial repo checkouts) but can be made good use of with some tricks
-and usage of a couple of lesser known command line switches.
+Maven or Bazel. 
 
 ## The repo
 A couple of toy applications under `apps/` depend on shared code under `libs/`.
@@ -21,7 +18,15 @@ A couple of toy applications under `apps/` depend on shared code under `libs/`.
     └── lib3
 ```
 
+## Continous integration
+The [ci/](ci/README.md) sub folder contains a self-contained ci-stack for building the monorepo with Jenkins.
+
 ## Maven and Bazel: a comparison of basic actions
+Maven is really not a monorepo-*native* build tool (e.g. lacks
+trustworthy incremental builds, can only build java code natively, is recursive and
+struggles with partial repo checkouts) but can be made good use of with some tricks
+and usage of a couple of lesser known command line switches.
+
 Action | in working directory  | with Maven | with Bazel
 :--- | :---: |:--- |:---
 Build the world| `.` | `mvn clean package -DskipTests` | `bazel build //...:*`
@@ -43,9 +48,6 @@ Print dependencies of `app1`| `./apps/app1` | `mvn dependency:list` | `bazel que
  über-/super-/fat-jar. 
  * Maven has no trustworthy support for incremental builds, hence one typically always build
  from a `clean` state.
-
-## Continous integration
-The [ci/](ci/README.md) sub folder contains a self-contained ci-stack for building the monorepo with Jenkins.
 
 ## Sparse checkouts
 A monorepo will naturally grow quite large quite fast and for many reasons engineers will for the
