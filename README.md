@@ -1,5 +1,5 @@
 # Monorepo sample
-This repo showcases how one could structure and build monorepos with either Apache Maven or Bazel. 
+This repo showcases how one could structure and build monorepos with either Apache Maven or Bazel.
 
 ## The repo
 A couple of toy applications under `apps/` depend on shared code under `libs/`.
@@ -66,12 +66,12 @@ than app1. To make it happen, either run a checkout command or to update the wor
 git read-tree -mu HEAD
 ```
 
-### Notes for Maven
+## Notes for Maven
+### Sparse checkouts
 While Bazel is fine with sparse checkouts, Maven struggles as a sparse checkout typically implies
 that there will be pom.xml-references to submodules that no longer are present on disc. A hack to
 work-around this is to use Maven profiles that only activates when the corresponding pom.xml-file
 is available on disc:
-
 ```xml
 <profile>
   <id>app2</id>
@@ -86,24 +86,15 @@ is available on disc:
 </profile>
 ```
 
----
- 
-## A bag of useful tricks for teaching an old dog something new
+### Build parallelization
+Maven requires explicit setup to build modules in parallell. This can be provided as a switch on the
+command-line (`--threads 2`) or in [`.mvn/maven.config`](.mvn/maven.config).
 
-Defining the current version with an environment variable (that holds e.g current GIT revision)
-
-
----
-
-**TODO:**
-* Vurderar en "bazel-branch" och en "maven-branch"
-* Vurder en "en paket per java package" branch før Bazel
-* Test kotlin rules
-* Test bazel build cache
-* Test genrule før att bygga frontend kode
-* Test spring boot app
-
-* Blog artikel:
-  * Monorepo øvergripande
-  * Demo-repo: rent praktiskt
-  * Bazel!
+### Versioning
+Maven requires you to provide an version for every module in its [Project Object Model](https://maven.apache.org/guides/introduction/introduction-to-the-pom.html).
+This is confusing and superflous in monorepos as the they are typically exclusively versioned by the version control system.
+This repo takes advantage of Maven's newish support for so-called [CI Friendly Versions](https://maven.apache.org/maven-ci-friendly.html).
+This makes it possible to ensure that the version of all Maven modules are set to current git HEAD at build-time:
+```bash
+$ mvn clean install -Drevision=$(git rev-parse HEAD)
+```
