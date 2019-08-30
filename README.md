@@ -100,3 +100,8 @@ $ mvn clean install -Drevision=$(git rev-parse HEAD)
 ```
 To ensure that no CI-friendly version placeholders (`<version>${revision}</version>`) are present in the pom-files that are installed,
 this repo utilizes the [flatten-maven-plugin](https://www.mojohaus.org/flatten-maven-plugin/) to resolve them to their values before install.
+
+### Partial builds
+Maven's lack of incremental build support can lead to long build times in a large monorepo.
+The [partial-build-plugin](https://github.com/lesfurets/partial-build-plugin) can be used to only build modules that has
+a diff against the trunk branch.
