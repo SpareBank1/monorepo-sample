@@ -98,3 +98,5 @@ This makes it possible to ensure that the version of all Maven modules are set t
 ```bash
 $ mvn clean install -Drevision=$(git rev-parse HEAD)
 ```
+To ensure that no CI-friendly version placeholders (`<version>${revision}</version>`) are present in the pom-files that are installed,
+this repo utilizes the [flatten-maven-plugin](https://www.mojohaus.org/flatten-maven-plugin/) to resolve them to their values before install.
