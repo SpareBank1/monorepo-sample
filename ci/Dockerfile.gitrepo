@@ -10,7 +10,7 @@ ADD .git/ /tmp/git
 RUN mkdir /etc/dropbear
 ENV USER=git PASSWORD=git
 RUN adduser -D ${USER} && echo "${USER}:${PASSWORD}" | chpasswd
-RUN git clone --bare /tmp/git /home/$USER/test.git
+RUN git clone -b master --single-branch --bare /tmp/git /home/$USER/test.git
 
 RUN mkdir /home/$USER/.ssh
 ADD ci/provision/keypair/.ssh/id_rsa.pub /home/$USER/.ssh/authorized_keys
