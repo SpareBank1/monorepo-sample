@@ -9,12 +9,10 @@ A couple of toy applications under `apps/` depend on shared code under `libs/`.
 
 ├── apps
 │   ├── app1
-│   ├── app2
 │   └── app2
 └── libs
     ├── lib1
-    ├── lib2
-    └── lib3
+    └── lib2
 ```
 
 ## Continous integration
