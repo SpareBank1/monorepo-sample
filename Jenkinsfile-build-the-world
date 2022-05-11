@@ -9,7 +9,7 @@ pipeline {
         stage('Build the world') {
             steps {
                 sh 'mvn -version'
-                sh 'mvn clean install'
+                sh 'echo HELLO_WORLD'
             }
         }
 
