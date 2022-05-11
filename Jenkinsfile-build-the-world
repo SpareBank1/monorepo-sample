@@ -8,6 +8,7 @@ pipeline {
     stages {
         stage('Build the world') {
             steps {
+                sh 'mvn -version'
                 sh 'mvn clean install'
             }
         }
