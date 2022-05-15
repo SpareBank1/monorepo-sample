@@ -20,9 +20,9 @@ pipeline {
     stages {
         stage('Build project app1') {
             when {
-                changeset "apps/app1/**"
+//                 changeset "apps/app1/**"
                 expression {  // there are changes in some-directory/...
-                                sh(returnStatus: true, script: 'git diff  origin/master --name-only | grep --quiet "^apps/apps1/.*"') == 0
+                                sh(returnStatus: true, script: 'git diff  origin/master --name-only | grep --quiet "^apps/app1/.*"') == 0
                             }
             }
             steps {
