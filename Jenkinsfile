@@ -20,7 +20,7 @@ pipeline {
     stages {
         stage('Build project app1') {
             when {
-                changeset "apps/app1/**"
+                changeset "apps/app1/*"
             }
             steps {
                 build 'app1-multi-build'
@@ -28,7 +28,7 @@ pipeline {
         }
         stage('Build project app2') {
             when {
-                changeset "apps/app2/**"
+                changeset "apps/app2/*"
             }
             steps {
                 build 'app2-multi-build'
