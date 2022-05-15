@@ -1,21 +1,6 @@
 pipeline {
-//   agent {
-//        docker {
-//            image 'docker.io/library/maven:3.6.1-jdk-8'
-//            args '-v /var/jenkins_home/workspace/mono-pipeline:/opt/maven -w /opt/maven'
-//        }
-//    }
 
     agent any
-
-//     stages {
-//         stage('Build the world') {
-//             steps {
-//                 sh 'mvn clean install'
-//             }
-//         }
-//
-//     }
 
     stages {
         stage('Build project app1') {
@@ -36,17 +21,15 @@ pipeline {
                 }
             }
             steps {
-                build 'app2-multi-build'
+                ensureMultibranchJobExists('app1-multi-build')
+                build job: "app2-multi-build/${env.BRANCH_NAME}"
             }
         }
     }
 }
 
-def ensureMultibranchJobExists(targetJob) {
+def ensureMultibranchJobExists(rootJob) {
   def branch = env.BRANCH_NAME.replaceAll('/', '%252F')
-  def rootJob = targetJob
-  println "************> branch: $branch"
-  println "************> job: $rootJob"
 
   if (branch == null) {
     throw new NullPointerException('branch is required')
