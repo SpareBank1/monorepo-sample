@@ -8,12 +8,31 @@ pipeline {
 
     agent any
 
+//     stages {
+//         stage('Build the world') {
+//             steps {
+//                 sh 'mvn clean install'
+//             }
+//         }
+//
+//     }
+
     stages {
-        stage('Build the world') {
+        stage('Build project app1') {
+            when {
+                changeset "apps/app1/**"
+            }
             steps {
-                sh 'mvn clean install'
+                build 'app1-multi-build'
             }
         }
-
+        stage('Build project app2') {
+            when {
+                changeset "apps/app2/**"
+            }
+            steps {
+                build 'app2-multi-build'
+            }
+        }
     }
 }
