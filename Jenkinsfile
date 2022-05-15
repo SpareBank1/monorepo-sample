@@ -26,6 +26,7 @@ pipeline {
                             }
             }
             steps {
+                ensureMultibranchJobExists(env.BRANCH_NAME, 'app1-multi-build')
                 echo "===============> branch name: $env.BRANCH_NAME"
 //                 build "../app1-multi-build_${env.BRANCH_NAME}"
                 build job: "app1-multi-build/${env.BRANCH_NAME}"
@@ -43,4 +44,55 @@ pipeline {
             }
         }
     }
+}
+
+def ensureMultibranchJobExists(targetBranch, targetJob) {
+  def branch = targetBranch?.replaceAll('/', '%252F')
+  def rootJob = targetJob
+  println "************> branch: ${branch}"
+  println "************> job: ${job}"
+
+  if (branch == null) {
+    throw new NullPointerException('branch is required')
+  }
+  if (rootJob == null) {
+    throw new NullPointerException('rootJob is required')
+  }
+
+  // env.JENKINS_URL ends with a slash.
+  env.ENSURE_MULTIBRANCH_JOB_EXISTS_URL = "${env.JENKINS_URL}job/$rootJob/job/$branch/"
+  print "Ensuring multibranch job exists: ${env.ENSURE_MULTIBRANCH_JOB_EXISTS_URL}"
+
+  def lastHttpStatusCode = null
+  for (int i=0; i < 12; i++) {
+    lastHttpStatusCode = sh(
+      returnStdout: true,
+      script: '''
+#!/bin/bash
+set -euo pipefail
+
+curl \
+  --output /dev/null \
+  --silent \
+  --user devtools:<MY_TOKEN> \
+  --write-out '%{http_code}' \
+  "${ENSURE_MULTIBRANCH_JOB_EXISTS_URL}" \
+;
+      '''.trim(),
+    )
+    if (lastHttpStatusCode == '200') {
+      break
+    } else {
+      print "Last status code: $lastHttpStatusCode"
+    }
+
+    sleep(
+      time: 10,
+      unit: 'SECONDS',
+    )
+  }
+
+  if (lastHttpStatusCode != '200') {
+    error "${env.ENSURE_MULTIBRANCH_JOB_EXISTS_URL} failed. Expected 200 status code, but received: $lastHttpStatusCode"
+  }
 }
