@@ -5,13 +5,10 @@ pipeline {
     stages {
         stage('Build project app1') {
             when {
-                expression {
-                    sh(returnStatus: true, script: 'git diff  origin/master --name-only | grep --quiet "^apps/app1/.*"') == 0
-                }
-            }
-            when {
-                allOf {
-                    branch 'master'
+                anyOf {
+                    expression {
+                        sh(returnStatus: true, script: 'git diff  origin/master --name-only | grep --quiet "^apps/app1/.*"') == 0
+                    }
                     changeset "apps/app1/**"
                 }
             }
