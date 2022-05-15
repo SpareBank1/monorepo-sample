@@ -27,7 +27,8 @@ pipeline {
             }
             steps {
                 echo "===============> branch name: $env.BRANCH_NAME"
-                build "../app1-multi-build_${env.BRANCH_NAME}"
+//                 build "../app1-multi-build_${env.BRANCH_NAME}"
+                build job "app1-multi-build"
             }
         }
         stage('Build project app2') {
