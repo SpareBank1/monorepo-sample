@@ -20,24 +20,20 @@ pipeline {
     stages {
         stage('Build project app1') {
             when {
-//                 changeset "apps/app1/**"
-                expression {  // there are changes in some-directory/...
-                                sh(returnStatus: true, script: 'git diff  origin/master --name-only | grep --quiet "^apps/app1/.*"') == 0
-                            }
+                expression {
+                    sh(returnStatus: true, script: 'git diff  origin/master --name-only | grep --quiet "^apps/app1/.*"') == 0
+                }
             }
             steps {
                 ensureMultibranchJobExists('app1-multi-build')
-                echo "===============> branch name: $env.BRANCH_NAME"
-//                 build "../app1-multi-build_${env.BRANCH_NAME}"
                 build job: "app1-multi-build/${env.BRANCH_NAME}"
             }
         }
         stage('Build project app2') {
             when {
-//                 changeset "apps/app2/*"
-                expression {  // there are changes in some-directory/...
-                                                sh(returnStatus: true, script: 'git diff  origin/master --name-only | grep --quiet "^apps/app2/.*"') == 0
-                                            }
+                expression {
+                    sh(returnStatus: true, script: 'git diff  origin/master --name-only | grep --quiet "^apps/app2/.*"') == 0
+                }
             }
             steps {
                 build 'app2-multi-build'
