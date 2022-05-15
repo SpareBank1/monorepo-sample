@@ -49,8 +49,8 @@ pipeline {
 def ensureMultibranchJobExists(targetJob) {
   def branch = env.BRANCH_NAME.replaceAll('/', '%252F')
   def rootJob = targetJob
-//   println "************> branch: ${branch}"
-//   println "************> job: ${job}"
+  println "************> branch: $branch"
+  println "************> job: $job"
 
   if (branch == null) {
     throw new NullPointerException('branch is required')
@@ -74,7 +74,7 @@ set -euo pipefail
 curl \
   --output /dev/null \
   --silent \
-  --user devtools:<MY_TOKEN> \
+//   --user devtools:<MY_TOKEN> \
   --write-out '%{http_code}' \
   "${ENSURE_MULTIBRANCH_JOB_EXISTS_URL}" \
 ;
