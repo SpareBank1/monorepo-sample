@@ -74,7 +74,6 @@ set -euo pipefail
 curl \
   --output /dev/null \
   --silent \
-//   --user devtools:<MY_TOKEN> \
   --write-out '%{http_code}' \
   "${ENSURE_MULTIBRANCH_JOB_EXISTS_URL}" \
 ;
