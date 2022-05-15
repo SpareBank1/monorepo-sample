@@ -21,7 +21,7 @@ pipeline {
                 }
             }
             steps {
-                ensureMultibranchJobExists('app1-multi-build')
+                ensureMultibranchJobExists('app2-multi-build')
                 build job: "app2-multi-build/${env.BRANCH_NAME}"
             }
         }
