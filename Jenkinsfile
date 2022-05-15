@@ -67,7 +67,7 @@ def ensureMultibranchJobExists(targetBranch, targetJob) {
   for (int i=0; i < 12; i++) {
     lastHttpStatusCode = sh(
       returnStdout: true,
-      script: '''
+      script: """
 #!/bin/bash
 set -euo pipefail
 
@@ -78,7 +78,7 @@ curl \
   --write-out '%{http_code}' \
   "${ENSURE_MULTIBRANCH_JOB_EXISTS_URL}" \
 ;
-      '''.trim(),
+      """.trim(),
     )
     if (lastHttpStatusCode == '200') {
       break
