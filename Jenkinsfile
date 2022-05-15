@@ -9,6 +9,12 @@ pipeline {
                     sh(returnStatus: true, script: 'git diff  origin/master --name-only | grep --quiet "^apps/app1/.*"') == 0
                 }
             }
+            when {
+                allOf {
+                    branch 'master'
+                    changeset "apps/app1/**"
+                }
+            }
             steps {
                 ensureMultibranchJobExists('app1-multi-build')
                 build job: "app1-multi-build/${env.BRANCH_NAME}"
