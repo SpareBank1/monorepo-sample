@@ -31,7 +31,10 @@ pipeline {
         }
         stage('Build project app2') {
             when {
-                changeset "apps/app2/*"
+//                 changeset "apps/app2/*"
+                expression {  // there are changes in some-directory/...
+                                                sh(returnStatus: true, script: 'git diff  origin/master --name-only | grep --quiet "^apps/app2/.*"') == 0
+                                            }
             }
             steps {
                 build 'app2-multi-build'
