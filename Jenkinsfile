@@ -50,7 +50,7 @@ def ensureMultibranchJobExists(targetJob) {
   def branch = env.BRANCH_NAME.replaceAll('/', '%252F')
   def rootJob = targetJob
   println "************> branch: $branch"
-  println "************> job: $job"
+  println "************> job: $rootJob"
 
   if (branch == null) {
     throw new NullPointerException('branch is required')
