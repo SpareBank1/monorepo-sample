@@ -26,7 +26,7 @@ pipeline {
                             }
             }
             steps {
-                ensureMultibranchJobExists(env.BRANCH_NAME, 'app1-multi-build')
+                ensureMultibranchJobExists('app1-multi-build')
                 echo "===============> branch name: $env.BRANCH_NAME"
 //                 build "../app1-multi-build_${env.BRANCH_NAME}"
                 build job: "app1-multi-build/${env.BRANCH_NAME}"
@@ -46,11 +46,11 @@ pipeline {
     }
 }
 
-def ensureMultibranchJobExists(targetBranch, targetJob) {
-  def branch = targetBranch?.replaceAll('/', '%252F')
+def ensureMultibranchJobExists(targetJob) {
+  def branch = env.BRANCH_NAME.replaceAll('/', '%252F')
   def rootJob = targetJob
-  println "************> branch: ${branch}"
-  println "************> job: ${job}"
+//   println "************> branch: ${branch}"
+//   println "************> job: ${job}"
 
   if (branch == null) {
     throw new NullPointerException('branch is required')
