@@ -10,7 +10,7 @@ pipeline {
     stages {
         stage('Condition stage') {
             when {
-                expression true
+                expression { return true }
             }
             steps {
                 script {
