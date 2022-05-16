@@ -26,6 +26,7 @@ pipeline {
             }
             steps {
                 script {
+                    sh 'echo ${!currentBuild.rawBuild.getCauses()[0].toString()}'
                     currentBuild.result = 'ABORTED'
                     error("Aborting the build.")
                 }
@@ -34,7 +35,8 @@ pipeline {
 
         stage('Build app1') {
             steps {
-               sh 'mvn -f ${APP_PATH}/pom.xml clean install'
+                sh 'echo ${!currentBuild.rawBuild.getCauses()[0].toString()}'
+                sh 'mvn -f ${APP_PATH}/pom.xml clean install'
             }
         }
 
