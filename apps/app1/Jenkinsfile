@@ -18,6 +18,9 @@ pipeline {
                     expression {
                         sh(returnStatus: true, script: 'git diff  origin/master --name-only | grep --quiet "^${APP_PATH}/.*"') != 0
                     }
+                    expression {
+                        return !currentBuild.rawBuild.getCauses()[0].toString().contains('UserIdCause')
+                    }
                     not { branch 'master' }
                 }
             }
@@ -31,7 +34,6 @@ pipeline {
 
         stage('Build app1') {
             steps {
-               sh 'echo ${env.BUILD_CAUSE}'
                sh 'mvn -f ${APP_PATH}/pom.xml clean install'
             }
         }
