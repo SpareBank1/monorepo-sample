@@ -35,7 +35,9 @@ pipeline {
 
         stage('Build app1') {
             steps {
-                sh 'echo ${!currentBuild.rawBuild.getCauses()[0].toString()}'
+                script {
+                    echo currentBuild.rawBuild.getCauses()[0].toString()
+                }
                 sh 'mvn -f ${APP_PATH}/pom.xml clean install'
             }
         }
