@@ -5,9 +5,10 @@ pipeline {
     stages {
         stage('Build project app1') {
             when {
-                expression {
-                    sh(returnStatus: true, script: 'git diff  origin/master --name-only | grep --quiet "^apps/app1/.*"') == 0
-                }
+                changeset "**/apps/app1/*.*"
+//                 expression {
+//                     sh(returnStatus: true, script: 'git diff  origin/master --name-only | grep --quiet "^apps/app1/.*"') == 0
+//                 }
             }
             steps {
                 ensureMultibranchJobExists('app1-multi-build')
@@ -16,9 +17,10 @@ pipeline {
         }
         stage('Build project app2') {
             when {
-                expression {
-                    sh(returnStatus: true, script: 'git diff  origin/master --name-only | grep --quiet "^apps/app2/.*"') == 0
-                }
+                changeset "**/apps/app2/*.*"
+//                 expression {
+//                     sh(returnStatus: true, script: 'git diff  origin/master --name-only | grep --quiet "^apps/app2/.*"') == 0
+//                 }
             }
             steps {
                 ensureMultibranchJobExists('app2-multi-build')
