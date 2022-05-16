@@ -8,6 +8,18 @@ pipeline {
     agent any
 
     stages {
+        stage('Condition stage') {
+            when {
+                expression true
+            }
+            steps {
+                script {
+                    currentBuild.result = 'ABORTED'
+                    error("Aborting the build.")
+                }
+            }
+        }
+
         stage('Build app1') {
             steps {
                sh 'mvn -f apps/app1/pom.xml clean install'
