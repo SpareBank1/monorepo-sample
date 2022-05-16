@@ -8,7 +8,7 @@ pipeline {
     agent any
 
     parameters {
-        string(name: 'APP_PATH', defaultValue: 'apps/app1/')
+        string(name: 'APP_PATH', defaultValue: 'apps/app1')
       }
 
     stages {
@@ -16,7 +16,7 @@ pipeline {
             when {
                 allOf {
                     expression {
-                        sh(returnStatus: true, script: 'git diff  origin/master --name-only | grep --quiet "^${APP_PATH}.*"') != 0
+                        sh(returnStatus: true, script: 'git diff  origin/master --name-only | grep --quiet "^${APP_PATH}/.*"') != 0
                     }
                     not { branch 'master' }
                 }
@@ -31,7 +31,7 @@ pipeline {
 
         stage('Build app1') {
             steps {
-               sh "mvn -f apps/app1/pom.xml clean install"
+               sh 'mvn -f ${APP_PATH}/pom.xml clean install'
             }
         }
 
