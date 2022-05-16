@@ -9,7 +9,7 @@ pipeline {
 
     parameters {
         string(name: 'APP_PATH', defaultValue: 'apps/app1')
-      }
+    }
 
     stages {
         stage('Abort if there are no changes') {

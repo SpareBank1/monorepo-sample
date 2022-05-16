@@ -7,7 +7,31 @@ pipeline {
 
     agent any
 
+    parameters {
+            string(name: 'APP_PATH', defaultValue: 'apps/app2')
+        }
+
     stages {
+        stage('Abort if there are no changes') {
+            when {
+                allOf {
+                    expression {
+                        sh(returnStatus: true, script: 'git diff  origin/master --name-only | grep --quiet "^${APP_PATH}/.*"') != 0
+                    }
+                    expression {
+                        return !currentBuild.rawBuild.getCauses()[0].toString().contains('UserIdCause')
+                    }
+                    not { branch 'master' }
+                }
+            }
+            steps {
+                script {
+                    currentBuild.result = 'ABORTED'
+                    error("Aborting the build.")
+                }
+            }
+        }
+
         stage('Build app2') {
             steps {
                 sh 'mvn -f apps/app2/pom.xml clean install'
