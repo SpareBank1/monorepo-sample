@@ -31,6 +31,7 @@ pipeline {
 
         stage('Build app1') {
             steps {
+               sh 'echo ${env.BUILD_CAUSE}'
                sh 'mvn -f ${APP_PATH}/pom.xml clean install'
             }
         }
