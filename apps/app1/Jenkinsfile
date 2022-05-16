@@ -18,9 +18,9 @@ pipeline {
                     expression {
                         sh(returnStatus: true, script: 'git diff  origin/master --name-only | grep --quiet "^${APP_PATH}/.*"') != 0
                     }
-                    expression {
-                        return !currentBuild.rawBuild.getCauses()[0].toString().contains('UserIdCause')
-                    }
+//                     expression {
+//                         return !currentBuild.rawBuild.getCauses()[0].toString().contains('UserIdCause')
+//                     }
                     not { branch 'master' }
                 }
             }
