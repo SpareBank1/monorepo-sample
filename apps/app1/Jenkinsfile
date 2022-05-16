@@ -16,7 +16,7 @@ pipeline {
             when {
                 allOf {
                     expression {
-                        sh(returnStatus: true, script: 'git diff  origin/master --name-only | grep --quiet "^${APP_PATH}/.*"') != 0
+                        sh(returnStatus: false, script: 'git diff  origin/master --name-only | grep --quiet "^${APP_PATH}/.*"') == 0
                     }
 //                     expression {
 //                         return !currentBuild.rawBuild.getCauses()[0].toString().contains('UserIdCause')
