@@ -29,8 +29,8 @@ pipeline {
 }
 
 def ensureMultibranchJobExists(rootJob) {
-  prinln "===================+>GIT COMMIT: $env.GIT_PREVIOUS_SUCCESSFUL_COMMIT"
-  prinln "===================+>GIT COMMIT: $env.GIT_PREVIOUS_COMMIT"
+  println "===================+>GIT COMMIT: $env.GIT_PREVIOUS_SUCCESSFUL_COMMIT"
+  println "===================+>GIT COMMIT: $env.GIT_PREVIOUS_COMMIT"
   def branch = env.BRANCH_NAME.replaceAll('/', '%252F')
 
   if (branch == null) {
