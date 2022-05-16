@@ -10,7 +10,9 @@ pipeline {
     stages {
         stage('Condition stage') {
             when {
-                expression { return true }
+                expression {
+                    sh(returnStatus: true, script: 'git diff  origin/master --name-only | grep --quiet "^apps/app1/.*"') != 0
+                }
             }
             steps {
                 script {
