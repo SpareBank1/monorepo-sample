@@ -40,7 +40,7 @@ pipeline {
                 script {
                     echo currentBuild.rawBuild.getCauses()[0].toString()
                 }
-                sh "mvn -f ${APP_PATH}/pom.xml clean install"
+                sh "mvn -f apps/app1/pom.xml clean install"
             }
         }
 
