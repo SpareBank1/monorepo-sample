@@ -12,28 +12,28 @@ pipeline {
     }
 
     stages {
-        stage('Abort if there are no changes') {
-            when {
-                allOf {
-                    expression {
-                        sh(returnStatus: false, script: 'git diff  origin/master --name-only | grep --quiet "^${APP_PATH}/.*"') == 0
-                    }
+//         stage('Abort if there are no changes') {
+//             when {
+//                 allOf {
+//                     expression {
+//                         sh(returnStatus: true, script: 'git diff  origin/master --name-only | grep --quiet "^${APP_PATH}/.*"') == 0
+//                     }
 //                     expression {
 //                         return !currentBuild.rawBuild.getCauses()[0].toString().contains('UserIdCause')
 //                     }
-                    not { branch 'master' }
-                }
-            }
-            steps {
-                script {
-                    script {
-                        echo currentBuild.rawBuild.getCauses()[0].toString()
-                    }
-                    currentBuild.result = 'ABORTED'
-                    error("Aborting the build.")
-                }
-            }
-        }
+//                     not { branch 'master' }
+//                 }
+//             }
+//             steps {
+//                 script {
+//                     script {
+//                         echo currentBuild.rawBuild.getCauses()[0].toString()
+//                     }
+//                     currentBuild.result = 'ABORTED'
+//                     error("Aborting the build.")
+//                 }
+//             }
+//         }
 
         stage('Build app1') {
             steps {
