@@ -5,7 +5,7 @@ pipeline {
 //         }
 //     }
 
-    agent none
+    agent any
 
     parameters {
             string(name: 'APP_PATH', defaultValue: 'apps/app2')
