@@ -37,7 +37,7 @@ pipeline {
 
         stage('Build app1') {
             when {
-                changeset "**/app1/*.*"
+                changeset "**/apps/app1/*.*"
                 beforeAgent true
             }
             steps {
