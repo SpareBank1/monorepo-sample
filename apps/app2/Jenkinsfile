@@ -36,6 +36,9 @@ pipeline {
             steps {
                 script {
                     println "==============+>changeSets : $currentBuild.changeSets"
+                    for (int i = 0; i < currentBuild.changeSets.size(); i++) {
+                        println currentBuild.changeSets.get(i).getLogs()
+                    }
                 }
             }
         }
