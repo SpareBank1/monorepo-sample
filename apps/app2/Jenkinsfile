@@ -46,7 +46,7 @@ pipeline {
 //                 beforeAgent true
 //             }
             steps {
-                agent any
+//                 agent any
 
                 sh "mvn -f apps/app2/pom.xml clean install"
             }
