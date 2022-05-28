@@ -32,12 +32,17 @@ pipeline {
 //             }
 //         }
 
-        stage('Build app2') {
-            when {
+        stage('Show changeset') {
+            steps {
                 script {
                     echo "==============+>changeset: $currentBuild.changeset"
                     echo "==============+>changesets : $currentBuild.changesets"
                 }
+            }
+        }
+
+        stage('Build app2') {
+            when {
                 changeset "**/apps/app2/*.*"
                 beforeAgent true
             }
