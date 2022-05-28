@@ -35,7 +35,6 @@ pipeline {
         stage('Show changeset') {
             steps {
                 script {
-                    echo "==============+>changeset: $currentBuild.changeset"
                     echo "==============+>changesets : $currentBuild.changesets"
                 }
             }
