@@ -5,7 +5,7 @@ pipeline {
 //         }
 //     }
 
-    agent any
+    agent none
 
     parameters {
         string(name: 'APP_PATH', defaultValue: 'apps/app1')
@@ -41,6 +41,8 @@ pipeline {
                 beforeAgent true
             }
             steps {
+                agent any
+
                 script {
                     echo currentBuild.rawBuild.getCauses()[0].toString()
                 }

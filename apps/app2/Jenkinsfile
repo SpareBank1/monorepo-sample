@@ -5,7 +5,7 @@ pipeline {
 //         }
 //     }
 
-    agent any
+    agent none
 
     parameters {
             string(name: 'APP_PATH', defaultValue: 'apps/app2')
@@ -38,6 +38,8 @@ pipeline {
                 beforeAgent true
             }
             steps {
+                agent any
+
                 sh "mvn -f apps/app2/pom.xml clean install"
             }
         }
