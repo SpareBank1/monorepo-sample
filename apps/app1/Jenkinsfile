@@ -36,6 +36,10 @@ pipeline {
 //         }
 
         stage('Build app1') {
+            when {
+                changeset "**/app1/*.*"
+                beforeAgent true
+            }
             steps {
                 script {
                     echo currentBuild.rawBuild.getCauses()[0].toString()

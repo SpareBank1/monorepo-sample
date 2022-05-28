@@ -33,6 +33,10 @@ pipeline {
 //         }
 
         stage('Build app2') {
+            when {
+                changeset "**/app2/*.*"
+                beforeAgent true
+            }
             steps {
                 sh "mvn -f apps/app2/pom.xml clean install"
             }
