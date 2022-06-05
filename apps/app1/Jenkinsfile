@@ -36,16 +36,16 @@ pipeline {
 //         }
 
         stage('Build app1') {
-            when {
-                changeset "**/apps/app1/*.*"
-                beforeAgent true
-            }
+//             when {
+//                 changeset "**/apps/app1/*.*"
+//                 beforeAgent true
+//             }
             steps {
                 agent any
 
-                script {
-                    echo currentBuild.rawBuild.getCauses()[0].toString()
-                }
+//                 script {
+//                     echo currentBuild.rawBuild.getCauses()[0].toString()
+//                 }
                 sh "mvn -f apps/app1/pom.xml clean install"
             }
         }
