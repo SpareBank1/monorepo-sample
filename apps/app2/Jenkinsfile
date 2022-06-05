@@ -32,30 +32,27 @@ pipeline {
 //             }
 //         }
 
-//         stage('Show changeset') {
-//             steps {
-//                 script {
-//                     println "==============+>changeSets : $currentBuild.changeSets"
-//                     for (int i = 0; i < currentBuild.changeSets.size(); i++) {
-//                         for (int j = 0; j < currentBuild.changeSets.get(i).getLogs().size(); j++) {
-//                             for (int k = 0; j < currentBuild.changeSets.get(i).getLogs().get(j).getAffectedPaths().size(); k++) {
-//                                 println currentBuild.changeSets.get(i).getLogs().get(j).getAffectedPaths().get(k)
-//                             }
-//                         }
-//                     }
-//                 }
-//             }
-//         }
-
         stage('Build app2') {
-//             when {
-//                 changeset "**/apps/app2/*.*"
-//                 beforeAgent true
-//             }
             steps {
-//                 agent any
+                githubNotify status: 'PENDING', description: "BUILD $BUILD_ID has started", context: 'jenkins/build/app2',
+                             targetUrl: "$BUILD_URL", credentialsId: 'monorepo-dsl',
+                             account: 'kirill-kosenko', repo: 'monorepo-sample', sha: "${env.GIT_COMMIT}"
 
                 sh "mvn -f apps/app2/pom.xml clean install"
+            }
+
+            post {
+                success {
+                    githubNotify status: 'SUCCESS', description: "BUILD $BUILD_ID has finished", context: 'jenkins/build/app2',
+                                 targetUrl: "$BUILD_URL", credentialsId: 'monorepo-dsl',
+                                 account: 'kirill-kosenko', repo: 'monorepo-sample', sha: "${env.GIT_COMMIT}"
+                }
+
+                unsuccessful {
+                    githubNotify status: 'ERROR', description: "BUILD $BUILD_ID has failed", context: 'jenkins/build/app2',
+                                 targetUrl: "$BUILD_URL", credentialsId: 'monorepo-dsl',
+                                 account: 'kirill-kosenko', repo: 'monorepo-sample', sha: "${env.GIT_COMMIT}"
+                }
             }
         }
 
