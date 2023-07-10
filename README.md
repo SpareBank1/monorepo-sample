@@ -26,24 +26,24 @@ and usage of a couple of lesser known command line switches.
 
 Action | in working directory  | with Maven | with Bazel
 :--- | :---: |:--- |:---
-Build the world| `.` | `mvn clean package -DskipTests` | `bazel build //...:*`
-Run `app1`| `.` | `java -jar apps/app2/target/app1-1.0-SNAPSHOT.jar`| `java -jar bazel-bin/apps/app1/app1_deploy.jar`
-Build and test the world| `.` | `mvn clean package` | `bazel test //...:*`
+Build the world| `.` | `mvn clean install -DskipTests` | `bazel build //...:*`
+Run `app1`| `.` | `mvn -pl :app1 exec:java`| `java -jar bazel-bin/apps/app1/app1_deploy.jar`
+Build and test the world| `.` | `mvn clean install` | `bazel test //...:*`
 Build the world| `./apps/app1` | `mvn --file ../.. clean package -DskipTests` | `bazel build //...:*`
-Build `app1` and its dependencies| `.` | `mvn --projects :app1 --also-make clean package -DskipTests` | `bazel build //apps/app1:*`
-Build `app1` and its dependencies| `./apps/app1` | `mvn --file ../.. --projects :app1 --also-make clean package -DskipTests` | `bazel build :*`
-Build `lib1` and its dependents (aka. reverse dependencies or *rdeps* in Bazel parlance)  | `.` | `mvn --projects :lib1 --also-make-dependents clean package -DskipTests` | `bazel build $(bazel query 'rdeps("//...", "//libs/lib1")')`
-Print dependencies of `app1`| `./apps/app1` | `mvn dependency:list` | `bazel query  'deps(.)' --output package` 
+Build `app1` and its dependencies| `.` | `mvn -pl :app1 -am clean package -DskipTests` | `bazel build //apps/app1:*`
+Build `app1` and its dependencies| `./apps/app1` | `mvn -pl :app1 -am clean install -DskipTests` | `bazel build :*`
+Build `lib1` and its dependents (aka. reverse dependencies or *rdeps* in Bazel parlance)  | `.` | `mvn -pl :lib1 -amd clean package -DskipTests` | `bazel build $(bazel query 'rdeps("//...", "//libs/lib1")')`
+Print dependencies of `app1`| `./apps/app1` | `mvn dependency:tree` | `bazel query  'deps(.)' --output package` 
 
 **Notes**
- * Maven is a *recursive* build tool that needs an reference to the root module with `--file` 
- when building from a sub folder. In contrast will Bazel discover the entire project from 
+ * Maven is a *recursive* build tool, but it discovers the root by following the parents. 
+ Bazel will discover the entire project from 
  any sub folder and packages to be built can be specified both absolutely from root (`//`) and 
  relative the current working directory.
  * Bazel doesn't build the so-called *implicit* deploy jar-target (`:app1_deploy.jar`) if we
- refrain from building with the `:*` suffix. Deploy jar is Bazel speak før 
+ refrain from building with the `:*` suffix. Deploy jar is Bazel speak for 
  über-/super-/fat-jar. 
- * Maven has no trustworthy support for incremental builds, hence one typically always build
+ * Maven has no trustworthy support for incremental builds, hence after refactoring, one typically builds
  from a `clean` state.
 
 ## Sparse checkouts
